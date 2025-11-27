@@ -18,9 +18,8 @@ public class KeywordsDetector {
         detectAndPrint(sentences, keywords);
     }
 
-    // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
-    public static void detectAndPrint(String[] sentences, String[] keywords) {
+     public static void detectAndPrint(String[] sentences, String[] keywords) {
         int length_sentences = sentences.length ; 
         int length_keywords = keywords.length ; 
         for(int i=0; i < length_sentences; i++){
@@ -36,14 +35,7 @@ public class KeywordsDetector {
 
                     }
                 }
-
-
             }
         }
-        
-
-
-
-
     }
 }

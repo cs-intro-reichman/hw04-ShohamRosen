@@ -1,42 +1,34 @@
-
-
 public class Primes {
     public static void main(String[] args) {
-        //int num = Integer.parseInt(args[0]);
-        int num = 30 ; 
+        int num = Integer.parseInt(args[0]);
+        int count=0, percentage, prime_times;
 
-        boolean[] new_arr = new boolean[num+1] ; //new bolean arr
+        boolean[] arr_prime = new boolean[num+1];
 
-        int arr_length = new_arr.length ;
-        for(int b = 0; b < arr_length -1; b++){
-            new_arr[b] = true ;
+        for (int c=0;c<num+1;c++){
+             arr_prime[c] = true;
         }
 
-        new_arr[0] = false ;
-        new_arr[1] = false ; 
+        for (int i=2;i<num+1;i++){
+            for (int j=2; j<num+1;j++ ){
+             prime_times = i*j;
+             if ((i*j) > num){
+                break;
+             }
+            arr_prime[i*j] = false;
 
-        for(int i= 2; i < arr_length -1; i++){
-            for(int j = 2 ; j < arr_length -1; j++){
-               if ((i*j) < num+1) {
-               new_arr[i * j] = false; 
-               }
-               else {
-                break; 
-               }
-            }  
+            }
         }
-        int count = 0 ;
-        for(int n = 0; n < arr_length; n++){
-            if (new_arr[n] == true){
-                System.err.println(n);
+        System.out.println("Prime numbers up to " + num + ":");
+        for (int p=2;p<=num;p++){
+            if (arr_prime[p]){
+                System.out.println(p);
                 count ++;
             }
         }
 
-        int persent = (int) (((double)count / num) * 100); 
-        //System.err.println(persent);
+        percentage = (int) (((double) count/num) *100);
 
-    System.out.println("There are " + count + " primes between 2 and " + num + " (" + persent + "%" + " are primes)");
-
-    }
+        System.out.println("There are " + count + " primes between 2 and " + num+" (" + percentage + "% are primes)");
+        }
 }
