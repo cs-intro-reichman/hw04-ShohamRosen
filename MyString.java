@@ -1,10 +1,10 @@
 public class MyString {
     public static void main(String[] args) {
-        System.out.println("Testing lowercase:");
-        System.out.println("UnHappy : " + lowerCase("UnHappy"));
-        System.out.println("This costs 15 Sheksls : " + lowerCase("This costs 15 Sheksls"));
-        System.out.println("TLV : " + lowerCase("TLV"));
-        System.out.println("lowercase : " + lowerCase("lowercase"));
+        // System.out.println("Testing lowercase:");
+        // System.out.println("UnHappy : " + lowerCase("UnHappy"));
+        // System.out.println("This costs 15 Sheksls : " + lowerCase("This costs 15 Sheksls"));
+        // System.out.println("TLV : " + lowerCase("TLV"));
+        // System.out.println("lowercase : " + lowerCase("lowercase"));
 
         System.out.println("Testing contains:");
         System.out.println(contains("unhappy", "happy")); // true
@@ -18,13 +18,59 @@ public class MyString {
 
     /** Returns the lowercase version of the given string. */
     public static String lowerCase(String str) {
-        // Replace the following statement with your code
-        return null;
+        int str_length = str.length() ;
+
+        String new_string = "";
+
+        for(int i = 0; i < str_length; i++){
+            char current = str.charAt(i);
+            if ('A' < current && current < 'Z') {
+                char check  ;
+                check = (char) (current + 'a' - 'A') ;
+
+                new_string += (char) (current + 'a' - 'A') ;     
+        }
+        else{
+            new_string += current ; 
+        }      
+
+    } 
+        return new_string;
     }
 
-    /** If str1 contains str2, returns true; otherwise returns false. */
-    public static boolean contains(String str1, String str2) {
-        // Replace the following statement with your code
+
+/** If str1 contains str2, returns true; otherwise returns false. */
+  public static boolean contains(String str1, String str2) {
+        boolean match = true;
+
+        int length1 = str1.length();
+        int lenght2 = str2.length();
+
+        if (lenght2 > length1){
+            return false;
+        }
+        // לולאה חיצונית: עוברת על כל מיקום אפשרי ב-str1
+        // שממנו יכולה להתחיל str2
+        // (עד length1 - lenght2 כי אחרי זה אין מספיק תווים)
+        for (int i = 0; i <= length1 - lenght2; i++) {
+            match = true; 
+            for (int j = 0; j < lenght2; j++) {
+                // משווים את התו במיקום i+j ב-str1 לתו במיקום j ב-str2
+                if (str1.charAt(i + j) != str2.charAt(j)) {
+                    
+                    // אם התווים לא שווים אין התאמה במיקום
+                    match = false;
+                    break; 
+                }
+            }
+
+            // אם סיימנו את הלולאה הפנימית ו-match עדיין true -
+            if (match) {
+                return true;
+            }
+        }
+
+        // עברנו על כל המיקומים ולא מצאנו התאמה
         return false;
-    }
+  }
 }
